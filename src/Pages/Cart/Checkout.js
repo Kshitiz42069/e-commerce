@@ -4,7 +4,7 @@ import { faAdd, faLocation } from '@fortawesome/free-solid-svg-icons';
 
 
 function Checkout({ selectedItems}) {
-    const [count, setCount] = useState(1);
+    const [count] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
     const [addAddress, setAddAddress] = useState(false);
 
