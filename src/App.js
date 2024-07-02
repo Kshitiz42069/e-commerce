@@ -19,6 +19,7 @@ import Register from './Pages/Auth/Register';
 import Return from './Pages/Return/Return';
 import AllProducts from './Pages/Products/AllProducts';
 import User from './Pages/User/User';
+import MyOrders from './Pages/User/myOrders/MyOrders';
 import HotDeals from './Pages/Hot Deals/HotDeals';
 import AboutUs from './Pages/Footer pages/AboutUs';
 import TnC from './Pages/Footer pages/TnC';
@@ -170,6 +171,13 @@ function App() {
           <>
             <Navbar countcart={countcart} countwish={countwish}/>
             <ForgotPassword/>
+            <Footer/>
+          </>
+        }/>
+        <Route path='/myorders' element = {
+          <>
+            <Navbar countcart={countcart} countwish={countwish}/>
+            <MyOrders/>
             <Footer/>
           </>
         }/>

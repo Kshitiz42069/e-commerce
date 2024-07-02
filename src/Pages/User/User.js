@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import { faAdd, faAngleDown, faBagShopping, faLocation, faPowerOff, faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAdd, faAngleDown, faAngleRight, faBagShopping, faLocation, faPowerOff, faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 
 function User() {
@@ -45,7 +45,7 @@ function User() {
   return (
     <div className='mx-[1rem] lg:mx-[3rem] lg:py-[3rem] flex flex-col lg:flex-row lg:gap-[1.5rem]'>
         
-        <div className='lg:hidden flex mb-[2rem] mt-2 border-2 text-xl text-orange-500'>
+        <div className='lg:hidden flex mb-[2rem] mt-2 border-2 rounded-xl text-xl text-orange-500'>
             <p onClick={handleFilter} className='w-full text-center p-2'><Person2OutlinedIcon/> User</p>
         </div>
 
@@ -98,33 +98,35 @@ function User() {
         <div className='hidden lg:block lg:w-1/5'>
             <div className='flex flex-col gap-[1.5rem]'>
                 {/* name */}
-                <div className='flex items-center gap-[1.5rem] text-lg border-2 p-3'>
-                    <FontAwesomeIcon icon={faUser}/>
+                <div className='flex items-center gap-[1.5rem] text-lg border-2 rounded-xl p-3'>
+                    <FontAwesomeIcon icon={faUser} color='orange'/>
                     <p>Hello, <span className='font-bold'>User Name</span></p>
                 </div>
                 {/* other details */}
-                <div className='border-2'>
+                <div className='border-2 rounded-xl'>
                     {/* my orders */}
-                    <div className='flex items-center justify-between text-lg p-3 border-b-black border-b-2'>   
-                        <div className='flex items-center gap-[1.5rem]'>
-                            <FontAwesomeIcon icon={faBagShopping}/>
-                            <p>My Orders</p>
+                    <Link to={'/myorders'}>
+                        <div className='flex items-center justify-between text-lg p-3 border-b-black border-b-2'>   
+                            <div className='flex items-center gap-[1.5rem]'>
+                                <FontAwesomeIcon icon={faBagShopping} color='orange'/>
+                                <p>My Orders</p>
+                            </div>
+                            <FontAwesomeIcon icon={faAngleRight}/>
                         </div>
-                        <FontAwesomeIcon icon={faAngleDown}/>
-                    </div>
+                    </Link>
                     {/* accounts */}
                     <div className=''>
                         <div onClick={handleAccount} className='flex items-center justify-between text-lg p-3 border-b-black border-b-2'>   
                             <div className='flex items-center gap-[1.5rem]'>
-                                <FontAwesomeIcon icon={faUserAlt}/>
+                                <FontAwesomeIcon icon={faUserAlt} color='orange'/>
                                 <p>Account</p>
                             </div>
                             <FontAwesomeIcon icon={faAngleDown}/>
                         </div>
                         {account && (
                             <div className='text-lg text-gray-500 cursor-default border-b-black border-b-2'>
-                                <p onClick={handleProfile} className='px-[1rem] py-2 hover:bg-orange-500 hover:text-white transition-all ease-in-out'>Profile Information</p>
-                                <p onClick={handleAddress} className='px-[1rem] py-2 hover:bg-orange-500 hover:text-white transition-all ease-in-out'>Manage Addresses</p>
+                                <p onClick={handleProfile} className={`px-[1rem] py-2  ${profile? 'bg-orange-100 text-orange-600':''} hover:bg-orange-500 hover:text-white transition-all ease-in-out`}>Profile Information</p>
+                                <p onClick={handleAddress} className={`px-[1rem] py-2  ${address? 'bg-orange-100 text-orange-600':''} hover:bg-orange-500 hover:text-white transition-all ease-in-out`}>Manage Addresses</p>
                                 <Link to={'/wish'}><p className='px-[1rem] py-2 hover:bg-orange-500 hover:text-white transition-all ease-in-out'>My Wishlist</p></Link>
                                 <p onClick={handleNotification} className='px-[1rem] py-2 hover:bg-orange-500 hover:text-white transition-all ease-in-out'>All Notification</p>
                             </div>
@@ -132,16 +134,16 @@ function User() {
                     </div>
                     {/* logout */}
                     <div className='flex items-center gap-[1.5rem] text-lg p-3 border-b-black border-b-2'>
-                        <FontAwesomeIcon icon={faPowerOff}/>
+                        <FontAwesomeIcon icon={faPowerOff} color='orange'/>
                         <p>Logout</p>
                     </div>
                 </div>
             </div>
         </div>
         {/* right */}
-        <div className='mt-[2rem] lg:w-4/5 mb-[2rem]'>
+        <div className='lg:w-4/5 mb-[2rem]'>
             {profile && (
-                <div className='w-full border-2 p-[1rem] lg:p-[2rem]'>
+                <div className='w-full border-2 rounded-xl p-[1rem] lg:p-[2rem]'>
                     <h1 className='text-2xl font-semibold'>Personal Information</h1>
                     <form className='flex flex-col gap-[2rem] py-[2rem]' action="submit">
                         <div className='flex flex-col lg:flex-row gap-[2rem] items-center'>
@@ -169,7 +171,7 @@ function User() {
                 </div>
             )}
             {address && (
-                <div className='w-full border-2 p-[2rem]'>
+                <div className='w-full border-2 rounded-xl p-[2rem]'>
                     <h1 className='text-2xl font-semibold'>Personal Information</h1>
                     <div>
                         {addAddress ? (
