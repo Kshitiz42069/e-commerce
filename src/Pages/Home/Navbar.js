@@ -39,7 +39,7 @@ function Navbar({countcart,countwish}) {
                             <p className='absolute top-[-7px] left-4 text-white bg-red-500 p-1 text-xs rounded-[50%]'>{countwish}</p>
                         </div>
                     </Link>
-                    <Link to={'/register'}>
+                    <Link to={'/login'}>
                         <div className='flex items-center gap-2'>
                             <Person2OutlinedIcon style={{ fontSize: 28 }}/>
                             <p className='text-sm lg:text-lg'>Account</p>

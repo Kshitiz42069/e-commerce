@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Login() {
+    const [username,setUsername] = useState("admin@gmail.com");
+    const [password,setPassword] = useState("1234567");
   return (
     <div className='flex items-center justify-center py-[2.5rem] bg-[#ffc89b]'>
         <div className='flex lg:w-2/3 lg:h-[90vh] overflow-hidden rounded-xl'>
@@ -17,9 +19,9 @@ function Login() {
                 <p className='font-thin w-[17rem]'>Welcome! Please fill the credentials to create an Account.</p>
                 <form className='flex flex-col gap-[1rem]' action="submit">
                     <label className='text-gray-500 p-1' htmlFor="username">Username</label>
-                    <input className='border-2 p-1 outline-none' type="email" placeholder='example@gmail.com' required/>
+                    <input className='border-2 p-1 outline-none' type="email" placeholder='admin@gmail.com' value={username} onChange={(e)=>setUsername(e.target.value)} required/>
                     <label className='text-gray-500 p-1' htmlFor="password">Password</label>
-                    <input className='border-2 p-1 outline-none' type="password" placeholder='******' required/>
+                    <input className='border-2 p-1 outline-none' type="password" placeholder='******' value={password} onChange={(e)=>setPassword(e.target.value)} required/>
                     <button className='submit_button'><Link to={'/user'}>Login</Link></button>
                 </form>
                 <Link to={'/forgotpassword'}>
